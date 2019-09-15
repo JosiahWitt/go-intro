@@ -6,7 +6,7 @@ TODO: Fill in language overview
 
 ## Notes
 
-### [01: Hello, World!](code/01/main.go)
+### [01: Hello, World!](code/01/main.go) - [Playground](https://play.golang.org/p/HkcX8SIizVQ)
 
 - `package main`
   - The main package for the application; each executable Go application must have a main package
@@ -25,7 +25,7 @@ TODO: Fill in language overview
   - Prints "Write Intro to Go (part 1)" plus a new line in the terminal
 
 
-### [02: Variables](code/02/main.go)
+### [02: Variables](code/02/main.go) - [Playground](https://play.golang.org/p/yDhsbXG84c2)
 
 - `var item1, item2 string`
   - Declares the `item1` and `item2` variables to be of type `string`
