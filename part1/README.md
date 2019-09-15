@@ -59,3 +59,21 @@ TODO: Fill in language overview
 - `for i < 5 {...}`
   - `for` doubles as a while loop
   - Any `bool` value can be used in place of `i < 5`
+
+
+### [04: If Statements](code/04/main.go) - [Playground](https://play.golang.org/p/OdLylnQjvgC)
+
+- `if item1 == "" {...}`
+  - Checks if `item1` is the empty string
+  - Notice that there are no parenthesis
+  - Any `bool` value can be used in place of `item1 == ""`
+
+- `else if item1 == "todo" || item1 == "wip" {...}`
+  - Optional block that is evaluated if _all_ previous conditions are false and `item1 == "todo"` or `item1 == "wip"` evaluates to `true`
+
+- `else {...}`
+  - Optional block that is evaluated if _all_ previous conditions are false
+
+- `if i < 5 && i != 4 {...}`
+  - Block is evaluated if `i < 5` and `i` does not equal `4`
+  - Yes, I know, this should be written `i < 4`, but I wanted to show _not_ and _and_
