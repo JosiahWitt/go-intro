@@ -24,6 +24,9 @@ TODO: Fill in language overview
   - Calls the [`Println`](https://golang.org/pkg/fmt/#Println) function in the `fmt` package, providing the string `"Write Intro to Go (part 1)"`
   - Prints "Write Intro to Go (part 1)" plus a new line in the terminal
 
+- Notice that there are no semicolons at the end of expressions
+
+---
 
 ### [02: Variables](code/02/main.go) - [Playground](https://play.golang.org/p/yDhsbXG84c2)
 
@@ -46,6 +49,7 @@ TODO: Fill in language overview
 
 - Go types include: `bool`, `string`, `int`, `int64`, `byte`, `rune` (unicode), `float64`, and more
 
+---
 
 ### [03: Loops](code/03/main.go) - [Playground](https://play.golang.org/p/oNdEYw7_DAW)
 
@@ -57,9 +61,14 @@ TODO: Fill in language overview
   - `i++` increments `i` by one
 
 - `for i < 5 {...}`
-  - `for` doubles as a while loop
+  - `for` doubles as a while loop, since the "init" and "post" sections are optional
   - Any `bool` value can be used in place of `i < 5`
 
+- If you need an infinite loop (eg. processing TCP connections), you can simply write `for {...}`
+
+- Variables declared inside a loop don't escape the block
+
+---
 
 ### [04: If Statements](code/04/main.go) - [Playground](https://play.golang.org/p/OdLylnQjvgC)
 
@@ -78,6 +87,16 @@ TODO: Fill in language overview
   - Block is evaluated if `i < 5` and `i` does not equal `4`
   - Yes, I know, this should be written `i < 4`, but I wanted to show _not_ and _and_
 
+- Variables declared inside an if statement don't escape the block
+
+- If you want to declare a value just for use within the if statement as well as for use in the if block, you can use the following:
+```
+if val := 2 + 3; val <= 5 {
+  fmt.Println(val)
+}
+```
+
+---
 
 ### [05: Slices and Arrays](code/05/main.go) - [Playground](https://play.golang.org/p/UVAHpayxyUL)
 
