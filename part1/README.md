@@ -77,3 +77,33 @@ TODO: Fill in language overview
 - `if i < 5 && i != 4 {...}`
   - Block is evaluated if `i < 5` and `i` does not equal `4`
   - Yes, I know, this should be written `i < 4`, but I wanted to show _not_ and _and_
+
+
+### [05: Slices and Arrays](code/05/main.go) - [Playground](https://play.golang.org/p/UVAHpayxyUL)
+
+- Our project is getting quite messy, let's clean up!
+
+- `todos := []string{...}`
+  - Creates and fills the `string` slice
+  - If nothing is provided (eg. `[]string{}`), an empty slice is created
+
+- `todos = append(todos, ...)`
+  - Appends more items to a copy of the `todos` slice, and assigns that new slice to the `todos` variable
+
+- `for i, todo := range todos {...}`
+  - Ranges over the `todos` slice
+  - Returns the index and value for each item, stored in `i` and `todo`, respectively
+  - If you don't want the index, use the `_` (blank identifier) to specify that that value won't be used
+    - eg. `for _, todo := range todos {...}`
+  - If you don't want the value, skip it
+    - eg. `for i := range todos {...}`
+
+- `fmt.Printf("%d: %s\n", i+1, todo)`
+  - Uses format printing, for a list of verbs, see the [docs](https://golang.org/pkg/fmt/#hdr-Printing)
+  - `%d` is for a decimal (base 10) integer
+  - `%s` is for a string
+
+- Go also has arrays, but they have fixed length, so usually slices are used, since they can always be appended to
+  - To create an array, specify the length in the type
+    - eg. `todos := [3]string{}`
+    - Creates a string array of length 3
