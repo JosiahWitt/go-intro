@@ -12,7 +12,7 @@ TODO: Fill in language overview
   - The main package for the application; each executable Go application must have a main package
   - We'll talk more about packages in a bit
 
-- `func main() {}`
+- `func main() {...}`
   - The main function for the main package; each main package must have a main function.
   - This is where the application starts
 
@@ -43,3 +43,19 @@ TODO: Fill in language overview
   - Uses the `:=` assignment operator for type inference
   - Declares the `item4` variable to be of type `string` and assigns the string to `"Read the Golang Weekly email"`
   - The preferred way to set variables
+
+- Go types include: `bool`, `string`, `int`, `int64`, `byte`, `rune` (unicode), `float64`, and more
+
+
+### [03: Loops](code/03/main.go) - [Playground](https://play.golang.org/p/oNdEYw7_DAW)
+
+- `for i := 0; i < 5; i++ {...}`
+  - `for` is the only type of loop
+  - Notice that there are no parenthesis
+  - `i := 0` assigns the variable `i` to be an `int` with value `0`
+  - `i < 5` says "while `i` is less than `5`"
+  - `i++` increments `i` by one
+
+- `for i < 5 {...}`
+  - `for` doubles as a while loop
+  - Any `bool` value can be used in place of `i < 5`
