@@ -346,3 +346,23 @@ if val := 2 + 3; val <= 5 {
     - Calls the `Finish` method on the 3rd `Todo`
   - `group.Print()`
     - Calls the `Print` method on the `group`
+
+---
+
+### [13: Custom Types](code/13/)
+
+- [`todo/todos.go`](code/13/todo/todos.go)
+  - `type Todos []*Todo`
+    - Defines the type `Todos` to be a slice of `*Todo`
+    - These types can have methods as well
+    - So you could define a custom `int` type (`type MyInt int`) with an `Abs` method
+
+- [`todo/group.go`](code/13/todo/group.go)
+  - `Todos Todos`
+    - Define the `Todos` field in struct `Group` to be of type `Todos`
+  - `for _, todo := range g.Todos {...}`
+    - Since `Todos` is an underlying slice, we can still `range` over it
+
+- [`main.go`](code/13/main.go)
+  - `group.Append(todo.Todos{...})`
+    - We can now use `todo.Todos` instead of `[]*todo.Todo`
