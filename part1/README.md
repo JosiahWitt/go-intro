@@ -219,6 +219,8 @@ if val := 2 + 3; val <= 5 {
 - `todos = append(todos, Todo{...})`
   - Creates and appends a `Todo` to the `todos` slice
 
+- If a struct field is not set, it defaults to the zero value
+
 ---
 
 ### [08: Functions](code/08/main.go) - [Playground](https://play.golang.org/p/Zi1WSIjuU7U)
@@ -242,3 +244,28 @@ if val := 2 + 3; val <= 5 {
 
 - `return Todo{...}`
   - Creates a new `Todo` and returns it
+
+---
+
+### [09: Functions & Errors](code/09/main.go) - [Playground](https://play.golang.org/p/yfCNH4ehKY-)
+
+- `func printTodos(todos []Todo) (int, error) {...}`
+  - Updates `printTodos` function to return two values:
+    - `int` which contains the number of Todos printed
+    - `error` which contains an error, if any, printing the Todos
+    - The error is typically returned as the last value
+
+- `return 0, errors.New("no todos to print")`
+  - Returns a "no todos to print" error
+
+- `numPrinted, err := printTodos(todos)`
+  - Calls the `printTodos` function, and stores the returned values in `numPrinted` and `err`
+  - The variable `err` is typically used to store variables
+
+- `if err != nil {...}`
+  - Checks if an error is present
+  - Usually you'll just return the error if it is present, but you may also wrap it with more context, or do some clean up work
+
+- `if _, err := printTodos([]Todo{}); err != nil {...}`
+  - Calls the `printTodos` function with an empty slice, then checks if an error was returned
+  - Since we don't need the number of Todos printed, we use the `_` (blank identifier) to ignore that value
