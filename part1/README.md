@@ -300,7 +300,7 @@ if val := 2 + 3; val <= 5 {
 
 ---
 
-### [10: Methods](code/11/main.go) - [Playground](https://play.golang.org/p/fHNeFLVVorm)
+### [11: Methods](code/11/main.go) - [Playground](https://play.golang.org/p/fHNeFLVVorm)
 
 - So far, so good, but it feels strange to define a `finishTodo` function and pass in a `Todo`
   - This is why Go allows methods on types
@@ -312,3 +312,37 @@ if val := 2 + 3; val <= 5 {
 
 - `todos[2].finish()`
   - Calls the `finish` method on the 3rd Todo
+
+---
+
+### [12: Packages](code/12/)
+
+- So far, everything has been in the `main` package
+  - While this is fine for a tiny program, to scale out, we'll want to utilize other packages
+  - Let's create the `todo` package
+
+- The `todo` directory is where the `todo` package lives
+  - The directory name typically matches the package name
+
+- Public items are specified with an uppercase letter (eg. types, functions, methods, struct fields, etc.)
+  - Private items are specified with a lowercase letter
+    - Private items are accessible at a package level
+
+- [`todo/todo.go`](code/12/todo/todo.go)
+  - `func (t *Todo) Finish() {...}`
+    - The `Finish` method is now uppercase, since we want to access it from outside the package
+
+- [`todo/group.go`](code/12/todo/group.go)
+  - Added the `Group` type, which holds a group of `Todo`s
+  - Overall, it should be familiar
+  - `g.Todos = append(g.Todos, todos...)`
+    - `todos...` spreads the slice of `*Todo` for use with the builtin `append` function
+
+- [`main.go`](code/12/main.go)
+  - `import "github.com/JosiahWitt/go-intro/part1/code/12/todo"`
+    - Imports the `todo` package
+    - Packages are referenced by full path, which typically includes the domain
+  - `group.Todos[2].Finish()`
+    - Calls the `Finish` method on the 3rd `Todo`
+  - `group.Print()`
+    - Calls the `Print` method on the `group`
