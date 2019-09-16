@@ -393,3 +393,11 @@ if val := 2 + 3; val <= 5 {
   - `originalGroup` is of type `*Group`
 
 - If you need to accept any type, you use the empty interface as your type: `interface{}`
+
+---
+
+### [14: Conclusion](code/15/)
+
+- We've covered a lot!
+
+- I've cleaned up the code in preparation for the next part.
