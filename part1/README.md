@@ -185,3 +185,36 @@ if val := 2 + 3; val <= 5 {
 
 - Maps are randomized when using `range`
   - This is to prevent anyone relying on the ordering of maps, since the ordering relied on the underlying implementation
+
+---
+
+### [07: Structs](code/07/main.go) - [Playground](https://play.golang.org/p/W9k6fdl_Q-Z)
+
+- Nice! We're starting to make a TODO list. However, it doesn't seem right to use a map to store TODO values and completion status. What if we wanted to add a due date. Would we add another level of maps? No, in Go, we would create a struct.
+
+- A struct is a lightweight way to structure data
+
+- `type Todo struct {...}`
+  - Declares a new type called `Todo`, which is a `struct`
+  - Hint: You can also create other types, like a custom integer type
+    - eg. `type MyInts int`
+
+- `Title string`
+  - The struct field `Title` is of type `string`
+
+- `Done bool`
+  - The struct field `Done` is of type `bool`
+
+- `todos := []Todo{...}`
+  - Creates and fills a slice that holds `Todo`s
+
+- `Title: "Write Intro to Go (part 1)",`
+  - Sets the `Title` field on a the `Todo`
+  - Same for `Done`
+
+- `todos[2].Done = true`
+  - Set the 3rd Todo to be `Done`
+  - Struct fields are accessed using dot notation
+
+- `todos = append(todos, Todo{...})`
+  - Creates and appends a `Todo` to the `todos` slice
