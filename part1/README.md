@@ -274,12 +274,12 @@ if val := 2 + 3; val <= 5 {
 
 ### [10: Pointers](code/10/main.go) - [Playground](https://play.golang.org/p/-TXD4c8AIU8)
 
-`func finishTodo(todo *Todo) {...}`
+- `func finishTodo(todo *Todo) {...}`
   - Creates a new function `finishTodo`, which has a parameter `todo` which is a pointer to a `Todo`
   - If you don't know what pointers are, I suggest you [read about them](https://en.wikipedia.org/wiki/Pointer_(computer_programming))
     - Basically, they store the location in memory, instead of the item itself
 
-`todo.Done = false`
+- `todo.Done = false`
   - Sets the `Done` to false on the `todo`
   - Notice that we can still use the dot notation even though it is a pointer; Go dereferences the pointer behind the scenes
 
@@ -297,3 +297,18 @@ if val := 2 + 3; val <= 5 {
   - Calls the `finishTodo` function with a pointer to the `todo` variable
   - To get the pointer (address) location, we use `&`
   - Notice that when printing `todo` it is Done, however, since we made a copy by dereferencing it first, the original Todo has not been updated
+
+---
+
+### [10: Methods](code/11/main.go) - [Playground](https://play.golang.org/p/fHNeFLVVorm)
+
+- So far, so good, but it feels strange to define a `finishTodo` function and pass in a `Todo`
+  - This is why Go allows methods on types
+
+- `func (t *Todo) finish() {...}`
+  - Creates the `finish` method on the `Todo` struct
+  - Just like a function, you can pass in parameters and return multiple values
+  - Methods can have pointer receivers (as shown here) or non-pointer receivers
+
+- `todos[2].finish()`
+  - Calls the `finish` method on the 3rd Todo
