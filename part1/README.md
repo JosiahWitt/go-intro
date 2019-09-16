@@ -98,7 +98,7 @@ if val := 2 + 3; val <= 5 {
 
 ---
 
-### [05: Slices and Arrays](code/05/main.go) - [Playground](https://play.golang.org/p/UVAHpayxyUL)
+### [05: Slices and Arrays](code/05/main.go) - [Playground](https://play.golang.org/p/UXgN_whHC9i)
 
 - Our project is getting quite messy, let's clean up!
 
@@ -109,6 +109,28 @@ if val := 2 + 3; val <= 5 {
 - `todos = append(todos, ...)`
   - Appends more items to a copy of the `todos` slice, and assigns that new slice to the `todos` variable
 
+- `todos[4] = "Buy a Go Gopher plush"`
+  - Changes the value at index `4` to "Buy a Go Gopher plush"
+
+- `todo := todos[0]`
+  - Gets the value at index `0`
+  - The program panics at runtime if the index is out of bounds
+
+- `fmt.Printf("%d TODOs (showing first 5):\n", len(todos))`
+  - `len(todos)`
+    - Returns the length of the slice `todos`
+  - Read about `fmt.Printf` below
+
+- `firstFive := todos[:5]`
+  - "Slices" the slice to the first `5` elements of the slice
+  - Can specify starting and ending point
+    - eg. `mySlice[start:end]`, where `start` and `end` are both positive integers
+    - Start is inclusive, end is exclusive
+    - Skipping start defaults to 0
+      - eg. `mySlice[:10] == mySlice [0:10]`
+    - Skipping end defaults to `len(mySlice)`; the rest of the slice
+      - eg. `mySlice[3:] == mySlice [3:len(mySlice)]`
+
 - `for i, todo := range todos {...}`
   - Ranges over the `todos` slice
   - Returns the index and value for each item, stored in `i` and `todo`, respectively
@@ -118,11 +140,48 @@ if val := 2 + 3; val <= 5 {
     - eg. `for i := range todos {...}`
 
 - `fmt.Printf("%d: %s\n", i+1, todo)`
-  - Uses format printing, for a list of verbs, see the [docs](https://golang.org/pkg/fmt/#hdr-Printing)
+  - [`fmt.Printf`](https://golang.org/pkg/fmt/#Printf) uses format printing, for a list of verbs, see the [docs](https://golang.org/pkg/fmt/#hdr-Printing)
   - `%d` is for a decimal (base 10) integer
   - `%s` is for a string
+  - `%v` (not used here) uses the default for the type
 
 - Go also has arrays, but they have fixed length, so usually slices are used, since they can always be appended to
   - To create an array, specify the length in the type
     - eg. `todos := [3]string{}`
     - Creates a string array of length 3
+
+- Can make slices or arrays of any type
+
+---
+
+### [06: Maps](code/06/main.go) - [Playground](https://play.golang.org/p/PFdjJ0yjDHY)
+
+- We're making progress; now we can display a list of TODO items to a user, but we have no way of knowing if an item has been completed or not
+
+- `todos := map[string]bool{...}`
+  - Creates and fills a map with `string` keys and `bool` values
+  - If nothing is provided (eg. `map[string]bool{}`), an empty map is created
+
+- `todos["Read the Go 1.13 release notes"] = false`
+  - Sets the key `"Read the Go 1.13 release notes"` equal to `false`
+
+- `done, ok := todos["Write Intro to Go (part 1)"]`
+  - Returns the value for the key "Write Intro to Go (part 1)" and if it was ever set
+  - `ok` is a `bool`; `true` => the value was set, `false` => the value was not set
+  - Can skip the "comma ok"
+    - Returns the zero value if not set
+    - eg. `done := todos["Write Intro to Go (part 1)"]`
+
+- `fmt.Printf("%d TODOs:\n", len(todos))`
+  - `len(todos)`
+    - Returns the length of the map
+
+- `for todo, done := range todos {...}`
+  - Ranges over the `todos` map
+  - Returns the key and value for each item, stored in `todo` and `done`, respectively
+  - Follow the same rules as slices to ignore the key or value
+
+- Can make maps of any type
+
+- Maps are randomized when using `range`
+  - This is to prevent anyone relying on the ordering of maps, since the ordering relied on the underlying implementation

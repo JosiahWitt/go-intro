@@ -9,9 +9,15 @@ func main() {
 		"Read the Golang Weekly email",
 	}
 
-	todos = append(todos, "Read the Go 1.13 release notes", "Buy a Go Gopher plush")
+	todos = append(todos, "Read the Go 1.13 release notes", "WIP", "Hidden TODO")
+	todos[4] = "Buy a Go Gopher plush"
 
-	for i, todo := range todos {
+	todo := todos[0]
+	fmt.Println("First todo:", todo)
+
+	fmt.Printf("%d TODOs (showing first 5):\n", len(todos))
+	firstFive := todos[:5]
+	for i, todo := range firstFive {
 		fmt.Printf("%d: %s\n", i+1, todo)
 	}
 }
