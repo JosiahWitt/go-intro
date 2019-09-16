@@ -218,3 +218,27 @@ if val := 2 + 3; val <= 5 {
 
 - `todos = append(todos, Todo{...})`
   - Creates and appends a `Todo` to the `todos` slice
+
+---
+
+### [08: Functions](code/08/main.go) - [Playground](https://play.golang.org/p/Zi1WSIjuU7U)
+
+- Using a struct to structure a TODO item is much better
+
+- `func printTodos(todos []Todo) {...}`
+  - Creates a new function with the name `printTodos`, which accepts a parameter named `todos` which is a slice of `Todo`, and returns nothing
+
+- `printTodos(todos)`
+  - Calls the `printTodos` function, and passes in the `Todo` slice
+
+- `printTodosFn := printTodos`
+  - Functions are values, so you can store a function reference in a variable
+
+- `newTodo := func(title string, done bool) Todo {...}`
+  - Creates an anonymous function with two parameters:
+    - `title` is a `string`
+    - `done` is a `bool`
+  - Returns a `Todo`
+
+- `return Todo{...}`
+  - Creates a new `Todo` and returns it
