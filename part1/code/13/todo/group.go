@@ -1,10 +1,13 @@
 package todo
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Group struct {
 	Title string
-	Todos Todos
+	todos Todos
 }
 
 func NewGroup(title string) *Group {
@@ -14,12 +17,21 @@ func NewGroup(title string) *Group {
 }
 
 func (g *Group) Append(todos Todos) {
-	g.Todos = append(g.Todos, todos...)
+	g.todos = append(g.todos, todos...)
+}
+
+func (g *Group) Get(num int) (*Todo, error) {
+	i := num - 1
+	if i < 0 || i >= len(g.todos) {
+		return nil, errors.New("todo does not exist")
+	}
+
+	return g.todos[i], nil
 }
 
 func (g *Group) Print() {
-	fmt.Printf("%s: %d TODOs:\n", g.Title, len(g.Todos))
-	for _, todo := range g.Todos {
+	fmt.Printf("%s: %d TODOs:\n", g.Title, len(g.todos))
+	for _, todo := range g.todos {
 		checked := " "
 		if todo.Done {
 			checked = "x"

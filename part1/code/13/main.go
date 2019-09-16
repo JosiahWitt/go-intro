@@ -1,6 +1,10 @@
 package main
 
-import "github.com/JosiahWitt/go-intro/part1/code/13/todo"
+import (
+	"fmt"
+
+	"github.com/JosiahWitt/go-intro/part1/code/13/todo"
+)
 
 func main() {
 	group := todo.NewGroup("My TODOs")
@@ -28,6 +32,12 @@ func main() {
 		},
 	})
 
-	group.Todos[2].Finish()
+	todo, err := group.Get(3)
+	if err != nil {
+		fmt.Println("TODO DNE", err)
+		return
+	}
+	todo.Finish()
+
 	group.Print()
 }

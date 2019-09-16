@@ -335,6 +335,8 @@ if val := 2 + 3; val <= 5 {
 - [`todo/group.go`](code/12/todo/group.go)
   - Added the `Group` type, which holds a group of `Todo`s
   - Overall, it should be familiar
+  - `todos []*Todo`
+    - The `Group` struct field `todos` is private; it is not accessible outside the package
   - `g.Todos = append(g.Todos, todos...)`
     - `todos...` spreads the slice of `*Todo` for use with the builtin `append` function
 
@@ -342,7 +344,9 @@ if val := 2 + 3; val <= 5 {
   - `import "github.com/JosiahWitt/go-intro/part1/code/12/todo"`
     - Imports the `todo` package
     - Packages are referenced by full path, which typically includes the domain
-  - `group.Todos[2].Finish()`
+  - `todo, err := group.Get(3)`
+    - Calls the `Get` method on the `group`
+  - `todo.Finish()`
     - Calls the `Finish` method on the 3rd `Todo`
   - `group.Print()`
     - Calls the `Print` method on the `group`
