@@ -370,3 +370,26 @@ if val := 2 + 3; val <= 5 {
 - [`main.go`](code/13/main.go)
   - `group.Append(todo.Todos{...})`
     - We can now use `todo.Todos` instead of `[]*todo.Todo`
+
+---
+
+### [14: Interfaces](code/14/)
+
+- In Go, interfaces are ad-hoc; they can be created anywhere, and as long as the type implements the methods requested on the interface, it is said to satisfy the interface
+
+- `type TodoGroup interface {...}`
+  - We define the `TodoGroup` interface by providing the function signatures that the type must implement to satisfy the interface
+
+- `func createGroup() TodoGroup {}`
+  - We create a new function `createGroup` that returns a type that satisfies the `TodoGroup` interface
+
+- `return todo.NewGroup("My TODOs")`
+  - Since `Group` satisfies the interface, it can be returned
+  - Notice that `Group` has more methods than those on the interface, so in order to access them (or the struct fields), you need to use type assertion
+
+- `originalGroup, ok := group.(*todo.Group)`
+  - Use type assertion to assert that the type underlying the interface is a pointer to a `Group`
+  - `ok` is a `bool` that indicates if the type assertion is true
+  - `originalGroup` is of type `*Group`
+
+- If you need to accept any type, you use the empty interface as your type: `interface{}`
