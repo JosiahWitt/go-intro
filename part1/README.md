@@ -269,3 +269,31 @@ if val := 2 + 3; val <= 5 {
 - `if _, err := printTodos([]Todo{}); err != nil {...}`
   - Calls the `printTodos` function with an empty slice, then checks if an error was returned
   - Since we don't need the number of Todos printed, we use the `_` (blank identifier) to ignore that value
+
+---
+
+### [10: Pointers](code/10/main.go) - [Playground](https://play.golang.org/p/-TXD4c8AIU8)
+
+`func finishTodo(todo *Todo) {...}`
+  - Creates a new function `finishTodo`, which has a parameter `todo` which is a pointer to a `Todo`
+  - If you don't know what pointers are, I suggest you [read about them](https://en.wikipedia.org/wiki/Pointer_(computer_programming))
+    - Basically, they store the location in memory, instead of the item itself
+
+`todo.Done = false`
+  - Sets the `Done` to false on the `todo`
+  - Notice that we can still use the dot notation even though it is a pointer; Go dereferences the pointer behind the scenes
+
+- `todos := []*Todo{...}`
+  - Updates the `Todo` slice to be a slice of pointers to `Todo`s
+
+- `finishTodo(todos[2])`
+  - Calls the `finishTodo` function with a pointer to the 3rd Todo
+
+- `todo := *todos[0]`
+  - Dereferences 1st the Todo, using `*`
+  - This stores a copy in `todo`
+
+- `finishTodo(&todo)`
+  - Calls the `finishTodo` function with a pointer to the `todo` variable
+  - To get the pointer (address) location, we use `&`
+  - Notice that when printing `todo` it is Done, however, since we made a copy by dereferencing it first, the original Todo has not been updated
