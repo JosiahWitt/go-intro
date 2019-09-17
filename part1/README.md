@@ -2,7 +2,72 @@
 
 ## Overview
 
-TODO: Fill in language overview
+### What is Go?
+
+- Go is a **compiled**, **fast**, and **safe** open source language developed by Google
+  - **Compiled**
+    - Everything required to run the binary is included in the binary (versus shared libraries in C)
+    - Simple to deploy; run `go build` to build the binary, then upload and start the standalone binary on the server
+    - Cross compilation is supported via `GOARCH` and `GOOS` environment variables
+    - Great for projects that will run on another computer (ie. most things), including API Servers, CLIs, etc.
+
+  - **Fast**
+    - Since it is compiled and typed, it runs directly on the CPU
+    - Compile times are fast
+    - Development is fast, due to types, type inference, simplicity of the language, auto completion, auto import, documentation, etc.
+
+  - **Safe**
+    - Types catch typos at compile time, instead of during execution
+    - Garbage collected; you don’t manage memory allocation by hand
+    - Yes, there are pointers, but no, you can’t do anything more dangerous than having a `nil` pointer, which throws an error (this also happens in most languages, such as Ruby, JavaScript, etc.)
+    - Go 1 compatibility promise: no breaking changes while on Go 1, and hopefully a Go 2 will never come, since they hope to always maintain backwards compatibility
+    - Patch releases around monthly, minor releases twice a year
+    - Language changes are well thought out
+    - Large standard library (including HTTP clients and routers, JSON, etc.), which is included in the Go 1 compatibility promise
+    - Package management is built into the language, including cryptographic verification
+
+
+### Brief History
+
+- Go was created by Robert Griesemer, Rob Pike (Plan 9, UTF-8), and Ken Thompson (Unix, C, Plan 9, UTF-8) at Google, and publicly announced in 2009
+- Since 2009, it has gained traction in a number of companies and open source projects, such as Docker and Kubernetes
+
+### Installing
+
+- Want to play with Go without installing it yet?
+  - Use the [Go Playground](https://play.golang.org)
+  - You'll be able to follow along until we get to `12: Packages`
+
+- MacOS
+  - `brew install go`
+  - `vi ~/.bashrc` or `vi ~/.zshrc`
+    - Add:
+      ```
+      export GOPATH=$HOME/code/go # This is where my Go code lives
+      export GOROOT=/usr/local/opt/go/libexec
+      export PATH=$PATH:$GOPATH/bin
+      export PATH=$PATH:$GOROOT/bin
+      ```
+  - `source ~/.bashrc` or `source ~/.zshrc`
+  - `mkdir -p $GOPATH "$GOPATH/src" "$GOPATH/pkg" "$GOPATH/bin"`
+
+- Your Go code lives in the `$GOPATH/src` folder under your repository
+  - eg. `$GOPATH/src/github.com/<my_username>/<my_repo>`
+  - These directories don't need to be `git init`ialized for one-off projects
+  - With the new Go Modules (hopefully finalized in Go 1.14, though currently in Go 1.11 - 1.13, just not the default), you'll no longer be tied to your `$GOPATH`, but for now, I find it to be best way for working on Go projects
+
+### Tools
+
+- `go`
+  - Most tooling you need is in the `go` CLI
+  - `go run file_name.go`
+    - Runs the `file_name.go` file
+  - `go build`
+    - Builds the current project into a binary with the directory name
+  - `go get github.com/some/repo`
+    - Downloads the provided repo to the `$GOPATH`, so it can be imported
+
+---
 
 ## Notes
 
