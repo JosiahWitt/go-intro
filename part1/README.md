@@ -242,6 +242,11 @@ if val := 2 + 3; val <= 5 {
   - Can skip the "comma ok"
     - Returns the zero value if not set
     - eg. `done := todos["Write Intro to Go (part 1)"]`
+    - Zero values in Go:
+      - `0` for numeric types (`int`, `float64`, etc.)
+      - `false` for `bool`s,
+      - `""` (the empty string) for `string`s
+      - `nil` for pointers
 
 - `fmt.Printf("%d TODOs:\n", len(todos))`
   - `len(todos)`
@@ -344,6 +349,11 @@ if val := 2 + 3; val <= 5 {
 ---
 
 ### [10: Pointers](code/10/main.go) - [Playground](https://play.golang.org/p/-TXD4c8AIU8)
+
+- Pointers are essential to Go, since by default values are copied and passed by value ([eg](https://play.golang.org/p/kjRNQ9ySTgh))
+  - Except:
+    - Slices, whose elements can be modified without explicit use of pointers ([eg](https://play.golang.org/p/-vY8xxAAJH-))
+    - Maps, who are essentially pointers in the underlying implementation ([eg](https://play.golang.org/p/FEbvy5nE9KM))
 
 - `func finishTodo(todo *Todo) {...}`
   - Creates a new function `finishTodo`, which has a parameter `todo` which is a pointer to a `Todo`
