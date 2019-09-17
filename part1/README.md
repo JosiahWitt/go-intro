@@ -67,6 +67,12 @@
   - `go get github.com/some/repo`
     - Downloads the provided repo to the `$GOPATH`, so it can be imported
 
+### Learn More
+
+- [Go Website](https://golang.org)
+- [Go Tour](https://tour.golang.org)
+- [Effective Go](https://golang.org/doc/effective_go.html) - doc about writing code the "Go Way"
+
 ---
 
 ## Notes
